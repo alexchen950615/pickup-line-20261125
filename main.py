@@ -9,6 +9,12 @@ LINE = (
     "my attention stopped wandering \u2014 and I never want you to slide out of it."
 )
 
+# Gate (kit RULES.txt): entry must be 1-200 characters, a single line,
+# and not only whitespace. Asserted here so a bad line fails loudly
+# instead of silently producing an invalid entry.
+assert 1 <= len(LINE) <= 200, "pickup line must be 1-200 characters"
+assert "\n" not in LINE and LINE.strip(), "pickup line must be a single non-blank line"
+
 
 def main() -> None:
     import os
